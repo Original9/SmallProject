@@ -17,21 +17,22 @@
    <left>
       <AnchorPane prefHeight="552.0" prefWidth="818.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView layoutX="21.0" layoutY="475.0" prefHeight="200.0" prefWidth="787.0">
+            <TableView fx:id="tableView1" layoutX="21.0" layoutY="475.0" prefHeight="200.0" prefWidth="794.0">
               <columns>
-                  <TableColumn prefWidth="76.0" text="과목코드" />
-                <TableColumn prefWidth="91.0" text="과목" />
-                <TableColumn prefWidth="105.0" text="설명" />
-                  <TableColumn prefWidth="68.0" text="그룹코드" />
-                  <TableColumn prefWidth="71.0" text="교수이름" />
-                  <TableColumn prefWidth="95.0" text="시작날짜" />
-                  <TableColumn prefWidth="85.0" text="종료날짜" />
-                  <TableColumn prefWidth="79.0" text="시작시간" />
-                  <TableColumn prefWidth="70.0" text="종료시간" />
-                  <TableColumn minWidth="4.0" prefWidth="46.0" text="학점" />
+                  <TableColumn fx:id="colSubject_code1" prefWidth="53.0" text="과목코드" />
+                <TableColumn fx:id="colSubject_name1" prefWidth="45.0" text="과목" />
+                <TableColumn fx:id="colSubject_explain1" prefWidth="33.0" text="설명" />
+                  <TableColumn fx:id="colSubject_group_code1" prefWidth="88.0" text="그룹코드" />
+                  <TableColumn fx:id="colSubject_start_day1" prefWidth="75.0" text="시작날짜" />
+                  <TableColumn fx:id="colSubject_end_day1" prefWidth="76.0" text="종료날짜" />
+                  <TableColumn fx:id="colSubject_start_time1" maxWidth="100.0" prefWidth="237.0" text="시작시간" />
+                  <TableColumn fx:id="colSubject_end_time1" minWidth="0.0" prefWidth="66.0" text="종료시간" />
+                  <TableColumn fx:id="colClass_point1" minWidth="4.0" prefWidth="64.0" text="학점" />
+                  <TableColumn fx:id="colSubject_day1" minWidth="4.0" prefWidth="74.0" text="요일" />
+                  <TableColumn fx:id="colSubject_y_s1" minWidth="4.0" prefWidth="101.0" text="y_s" />
               </columns>
             </TableView>
-            <TableView fx:id="tableView" layoutX="30.0" layoutY="54.0" prefHeight="343.0" prefWidth="790.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="54.0">
+            <TableView fx:id="tableView" layoutX="30.0" layoutY="54.0" onMouseClicked="#getInformation" prefHeight="343.0" prefWidth="790.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="54.0">
               <columns>
                 <TableColumn fx:id="colSubject_code" prefWidth="79.0" text="과목코드" />
                   <TableColumn fx:id="colSubject_name" prefWidth="85.0" text="과목" />
@@ -42,6 +43,7 @@
                   <TableColumn fx:id="colSubject_start_time" prefWidth="82.0" text="시작시간" />
                   <TableColumn fx:id="colSubject_end_time" prefWidth="55.0" text="종료시간" />
                   <TableColumn fx:id="colClass_point" prefWidth="56.0" text="학점" />
+                  <TableColumn fx:id="colSubject_day" prefWidth="39.0" text="요일" />
                   <TableColumn fx:id="colSubject_y_s" prefWidth="39.0" text="y_s" />
               </columns>
             </TableView>
@@ -49,12 +51,12 @@
             <Label layoutX="42.0" layoutY="15.0" prefHeight="31.0" prefWidth="89.0" text="       검색" />
             <Label layoutX="42.0" layoutY="444.0" prefHeight="15.0" prefWidth="57.0" text="학생정보" />
             <TextField fx:id="txStd_info" editable="false" layoutX="105.0" layoutY="440.0" prefHeight="23.0" prefWidth="679.0" />
-            <Button layoutX="764.0" layoutY="405.0" mnemonicParsing="false" text="추가" />
+            <Button layoutX="764.0" layoutY="405.0" mnemonicParsing="false" onAction="#getListOfRegisterSubject" text="추가" />
             <Button layoutX="764.0" layoutY="675.0" mnemonicParsing="false" text="제거" />
             <Button layoutX="716.0" layoutY="722.0" mnemonicParsing="false" text="수강신청완료" />
             <Label layoutX="567.0" layoutY="409.0" text="과목코드" />
-            <TextField layoutX="622.0" layoutY="405.0" />
-            <Button layoutX="665.0" layoutY="722.0" mnemonicParsing="false" text="초기화" />
+            <TextField fx:id="txtSubject_code_register" layoutX="622.0" layoutY="405.0" />
+            <Button layoutX="665.0" layoutY="722.0" mnemonicParsing="false" onAction="#init_register_list" text="초기화" />
             <Button layoutX="304.0" layoutY="19.0" mnemonicParsing="false" onAction="#getListSuject" text="전체조회" />
          </children>
       </AnchorPane>

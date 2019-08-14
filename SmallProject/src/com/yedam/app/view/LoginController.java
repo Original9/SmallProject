@@ -28,8 +28,7 @@ public class LoginController {
 	public static String connectId ;
 	public void setConn_info(String newValue)
 	{		
-		connectId = newValue;
-		System.out.println(connectId);
+		connectId = newValue;		
 	}
 	public static String getConn_info()
 	{
@@ -107,7 +106,7 @@ public class LoginController {
 					setConn_info(lg.getId());
 					lblStatus.setText("Login Success");
 					BorderPane rootLayout = (BorderPane) txtUserName.getScene().getRoot();
-					BorderPane subjectview = FXMLLoader.load(getClass().getResource("SubjectApply.fxml"));
+					AnchorPane subjectview = FXMLLoader.load(getClass().getResource("SubjectApply.fxml"));
 					rootLayout.setCenter(subjectview);
 										
 					
