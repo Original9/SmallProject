@@ -103,7 +103,14 @@ public class SubjectController implements Initializable
 			}
 			
 		}
-		// 다지우고 널일때 Exption 발생
+		 
+		if(register_list == null)
+		{
+			for(int i = 0 ; i < register_list.size() ; )
+			{
+				register_list.remove(i);
+			}
+		}
 		tableView1.setItems(FXCollections.observableArrayList(register_list));
 		
 
@@ -217,9 +224,8 @@ public class SubjectController implements Initializable
 	protected void getInformation(MouseEvent event)
 	{
 		txtSubject_code_register.setText(tableView.getSelectionModel().getSelectedItem().getSubject_code());
-		
+
 	}
-	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
