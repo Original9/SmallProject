@@ -23,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
@@ -31,20 +32,21 @@ public class SubjectController implements Initializable
 	@FXML private TableView<Subject> tableView;
 	@FXML private TableView<Subject> tableView1;
 	
-	@FXML private TextField txtSubject_code;
-	@FXML private TextField txtSubject_name;
-	@FXML private TextField txtSubject_explain;
-	@FXML private TextField txtSubject_group_code;
-	@FXML private TextField txtSubject_start_day;
-	@FXML private TextField txtSubject_end_day;
-	@FXML private TextField txtSubject_start_time;
-	@FXML private TextField txtSubject_end_time;
-	@FXML private TextField txtSubject_y_s;
-	@FXML private TextField txtClass_point;
-	@FXML private TextField txtGrade;
+//	@FXML private TextField txtSubject_code;
+//	@FXML private TextField txtSubject_name;
+//	@FXML private TextField txtSubject_explain;
+//	@FXML private TextField txtSubject_group_code;
+//	@FXML private TextField txtSubject_start_day;
+//	@FXML private TextField txtSubject_end_day;
+//	@FXML private TextField txtSubject_start_time;
+//	@FXML private TextField txtSubject_end_time;
+//	@FXML private TextField txtSubject_y_s;
+//	@FXML private TextField txtClass_point;
+//	@FXML private TextField txtGrade;
 	
 	@FXML private TextField txStd_info;	
 	@FXML private TextField txtSubject_code_register;
+	@FXML private TextField txtSubject_register_delete;
 	@FXML private Button list;
 	
 	
@@ -74,11 +76,39 @@ public class SubjectController implements Initializable
 	@FXML TableColumn<Ob_subject, String> colGrade1;
 	@FXML TableColumn<Ob_subject,String> colSubject_day1;
 	
-	ArrayList<Subject> register_list = new ArrayList<>();
+	ArrayList<Subject> register_list = new ArrayList<>(); // 나중에 시간 되면 0번째 값을 지정해 놓자 
 	
 	private Alert alert;
 	SubjectDAO subjectDAO = new SubjectDAO();
 	
+	@FXML
+	protected void getInformation1(MouseEvent event)
+	{
+		
+		txtSubject_register_delete.setText(tableView1.getSelectionModel().getSelectedItem().getSubject_code());
+	}
+	
+	@FXML
+	protected void delete_register_list(ActionEvent event) 
+	{		 		
+		String delete_code = txtSubject_register_delete.getText();
+		if(delete_code != null)
+		{
+			for(int i = 0 ; i < register_list.size(); i++)
+			{
+				if(register_list.get(i).getSubject_code().equals(delete_code))
+				{
+					register_list.remove(i);
+				}
+			}
+			
+		}
+		// 다지우고 널일때 Exption 발생
+		tableView1.setItems(FXCollections.observableArrayList(register_list));
+		
+
+	}
+ 
 	@FXML 
 	protected void init_register_list(ActionEvent event)
 	{		
@@ -86,6 +116,7 @@ public class SubjectController implements Initializable
 		{
 			register_list.remove(i);
 		}
+		//다지워도 오류안남
 		tableView1.setItems(FXCollections.observableArrayList(register_list));	
 		
 	}
@@ -104,7 +135,11 @@ public class SubjectController implements Initializable
 				{
 					if(register_list.get(i).getSubject_code().equals(add_value))
 					{
-						System.out.println("이미등록되어 있습니다.");
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Program Information");
+						alert.setHeaderText("경고");
+						alert.setContentText("이미 등록되어 있습니다.");
+						alert.show();
 						check = false;
 						break;
 					}					
