@@ -48,7 +48,7 @@
             <ChoiceBox layoutX="131.0" layoutY="19.0" prefWidth="150.0" />
             <Label layoutX="42.0" layoutY="15.0" prefHeight="31.0" prefWidth="89.0" text="       검색" />
             <Label layoutX="42.0" layoutY="444.0" prefHeight="15.0" prefWidth="57.0" text="학생정보" />
-            <TextField fx:id="txStd_info" layoutX="105.0" layoutY="440.0" prefHeight="23.0" prefWidth="679.0" />
+            <TextField fx:id="txStd_info" editable="false" layoutX="105.0" layoutY="440.0" prefHeight="23.0" prefWidth="679.0" />
             <Button layoutX="764.0" layoutY="405.0" mnemonicParsing="false" text="추가" />
             <Button layoutX="764.0" layoutY="675.0" mnemonicParsing="false" text="제거" />
             <Button layoutX="716.0" layoutY="722.0" mnemonicParsing="false" text="수강신청완료" />
