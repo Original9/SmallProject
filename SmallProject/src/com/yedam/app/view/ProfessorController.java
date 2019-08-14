@@ -1,4 +1,4 @@
-package com.yedam.app.controller;
+package com.yedam.app.view;
 
 public class ProfessorController 
 {

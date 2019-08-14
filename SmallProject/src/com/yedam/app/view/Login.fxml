@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="850.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginController">
+<AnchorPane prefHeight="850.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yedam.app.view.LoginController">
    <children>
       <Button layoutX="364.0" layoutY="441.0" mnemonicParsing="false" onAction="#Login" text="Login">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="txtUserName" layoutX="297.0" layoutY="337.0" promptText="UserName">
+      <TextField fx:id="txtUserName" layoutX="297.0" layoutY="337.0" promptText="UserName"  >
          <font>
             <Font size="18.0" />
          </font>

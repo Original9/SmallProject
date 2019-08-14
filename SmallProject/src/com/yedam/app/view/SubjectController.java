@@ -1,4 +1,4 @@
-package com.yedam.app.controller;
+package com.yedam.app.view;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -12,6 +12,7 @@ import com.yedam.app.service.impl.SubjectDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -35,6 +36,8 @@ public class SubjectController implements Initializable
 	@FXML private TextField txtSubject_y_s;
 	@FXML private TextField txtClass_point;
 	@FXML private TextField txtGrade;
+	
+	@FXML private Button list;
 	
 	@FXML TableColumn<Ob_subject, String> colSubject_code;
 	@FXML TableColumn<Ob_subject, String> colSubject_name;
@@ -78,9 +81,9 @@ public class SubjectController implements Initializable
 		colSubject_end_day.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_end_day"));
 		colSubject_start_time.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_start_time"));
 		colSubject_end_time.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_end_time"));
-		colSubject_y_s.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_y_s"));
+		//colSubject_y_s.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_y_s"));
 		colClass_point.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("class_point"));
-		colGrade.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("grade"));
+		//colGrade.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("grade"));
 		
 	}
 
