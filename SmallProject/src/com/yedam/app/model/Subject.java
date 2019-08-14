@@ -14,6 +14,14 @@ public class Subject
 	private String subject_y_s;
 	private String class_point;
 	private String grade;
+	private String subject_day;
+	
+	public String getSubject_day() {
+		return subject_day;
+	}
+	public void setSubject_day(String subject_day) {
+		this.subject_day = subject_day;
+	}
 	public String getSubject_code() {
 		return subject_code;
 	}
@@ -92,8 +100,10 @@ public class Subject
 				+ subject_explain + ", subject_group_code=" + subject_group_code + ", pro_id=" + pro_id
 				+ ", subject_start_day=" + subject_start_day + ", subject_end_day=" + subject_end_day
 				+ ", subject_start_time=" + subject_start_time + ", subject_end_time=" + subject_end_time
-				+ ", subject_y_s=" + subject_y_s + ", class_point=" + class_point + ", grade=" + grade + "]";
+				+ ", subject_y_s=" + subject_y_s + ", class_point=" + class_point + ", grade=" + grade
+				+ ", subject_day=" + subject_day + "]";
 	}
+	
 	
 	
 	

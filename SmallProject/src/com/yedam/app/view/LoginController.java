@@ -28,8 +28,7 @@ public class LoginController {
 	public static String connectId ;
 	public void setConn_info(String newValue)
 	{		
-		connectId = newValue;
-		System.out.println(connectId);
+		connectId = newValue;		
 	}
 	public static String getConn_info()
 	{
