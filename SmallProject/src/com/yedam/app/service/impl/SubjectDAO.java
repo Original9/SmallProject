@@ -55,21 +55,25 @@ public class SubjectDAO
 	
 	public ArrayList<Subject> selectAll() throws SQLException
 	{
+		
 		Connection conn = DAO.getConnect();
 		Subject temp_subject = null;
 		ArrayList<Subject> list = new ArrayList<>();
 		//1.connect 2. 구문 3. 파라미터 셋팅 4. 실행 5. 연결해제
 		
 			//2. 구문
-			String sql = "select * from subject order by 1";			
+			//String sql = "select subject_code,subject_name,subject_explain,subject_group_code,subject_start_day,subject_end_day,subject_start_time,subject_end_time,class_point,grade from subject order by 1";
+			String sql = "select * from subject order by subject_code";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			
 			//3.파라미터 셋팅
 			
 			//4.실행
 			ResultSet rs = pstmt.executeQuery();
+			
 			while(rs.next())
 			{
-				temp_subject = new Subject();
+				temp_subject = new Subject();				
 				temp_subject.setSubject_code(rs.getString("subject_code"));
 				temp_subject.setSubject_name(rs.getString("subject_name"));
 				temp_subject.setSubject_explain(rs.getString("subject_explain"));
@@ -82,10 +86,13 @@ public class SubjectDAO
 				temp_subject.setClass_point(rs.getString("class_point"));
 				temp_subject.setGrade(rs.getString("grade"));
 				
-				
+				//System.out.println(temp_subject);
 				list.add(temp_subject);
+								
 			}			
+			rs.close();
 
+			
 			return list;	
 		
 	}

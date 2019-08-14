@@ -36,6 +36,8 @@ public class StudentController implements Initializable
 	@FXML TableColumn<Ob_std,String> colMajor;
 	@FXML TableColumn<Ob_std,String> colPasswd;
 	
+	
+	
 	private Alert alert;
 	StdDAO stdDAO = new StdDAO();
 
@@ -51,9 +53,10 @@ public class StudentController implements Initializable
 		
 		
 	}
+	
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize(URL arg0, ResourceBundle arg1) {		
 		
 		colStd_id.setCellValueFactory(new PropertyValueFactory<Ob_std, String>("std_id"));
 		colFirst_name.setCellValueFactory(new PropertyValueFactory<Ob_std, String>("first_name"));
