@@ -24,10 +24,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 public class SubjectController implements Initializable 
 {
 	@FXML private TableView<Subject> tableView;
+	@FXML private TableView<Subject> tableView1;
 	
 	@FXML private TextField txtSubject_code;
 	@FXML private TextField txtSubject_name;
@@ -42,7 +44,9 @@ public class SubjectController implements Initializable
 	@FXML private TextField txtGrade;
 	
 	@FXML private TextField txStd_info;	
+	@FXML private TextField txtSubject_code_register;
 	@FXML private Button list;
+	
 	
 	@FXML TableColumn<Ob_subject, String> colSubject_code;
 	@FXML TableColumn<Ob_subject, String> colSubject_name;
@@ -55,14 +59,75 @@ public class SubjectController implements Initializable
 	@FXML TableColumn<Ob_subject, String> colSubject_y_s;
 	@FXML TableColumn<Ob_subject, String> colClass_point;
 	@FXML TableColumn<Ob_subject, String> colGrade;
+	@FXML TableColumn<Ob_subject,String> colSubject_day;
 	
+	@FXML TableColumn<Ob_subject, String> colSubject_code1;
+	@FXML TableColumn<Ob_subject, String> colSubject_name1;
+	@FXML TableColumn<Ob_subject, String> colSubject_explain1;
+	@FXML TableColumn<Ob_subject, String> colSubject_group_code1;
+	@FXML TableColumn<Ob_subject, String> colSubject_start_day1;
+	@FXML TableColumn<Ob_subject, String> colSubject_end_day1;
+	@FXML TableColumn<Ob_subject, String> colSubject_start_time1;
+	@FXML TableColumn<Ob_subject, String> colSubject_end_time1;
+	@FXML TableColumn<Ob_subject, String> colSubject_y_s1;
+	@FXML TableColumn<Ob_subject, String> colClass_point1;
+	@FXML TableColumn<Ob_subject, String> colGrade1;
+	@FXML TableColumn<Ob_subject,String> colSubject_day1;
 	
+	ArrayList<Subject> register_list = new ArrayList<>();
 	
 	private Alert alert;
 	SubjectDAO subjectDAO = new SubjectDAO();
 	
+	@FXML 
+	protected void init_register_list(ActionEvent event)
+	{		
+		for(int i = 0 ; i < register_list.size() ; )
+		{
+			register_list.remove(i);
+		}
+		tableView1.setItems(FXCollections.observableArrayList(register_list));	
+		
+	}
+	
 	@FXML
-	protected void getListSuject(ActionEvent envent)
+	protected void getListOfRegisterSubject(ActionEvent event)
+	{
+		boolean check = true;
+		if(txtSubject_code_register.getText() != null)
+		{
+			String add_value = txtSubject_code_register.getText();			
+			try {
+								
+				Subject subject_temp = subjectDAO.selectOne(add_value);	
+				for(int i = 0 ; i< register_list.size();i++)
+				{
+					if(register_list.get(i).getSubject_code().equals(add_value))
+					{
+						System.out.println("이미등록되어 있습니다.");
+						check = false;
+						break;
+					}					
+				}
+				if(check)
+				{
+					register_list.add(subject_temp);					
+				}
+				
+				
+				tableView1.setItems(FXCollections.observableArrayList(register_list));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+	}
+	
+	@FXML
+	protected void getListSuject(ActionEvent event)
 	{
 		
 		try {			
@@ -113,6 +178,13 @@ public class SubjectController implements Initializable
 		
 	}
 	
+	@FXML
+	protected void getInformation(MouseEvent event)
+	{
+		txtSubject_code_register.setText(tableView.getSelectionModel().getSelectedItem().getSubject_code());
+		
+	}
+	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -129,6 +201,20 @@ public class SubjectController implements Initializable
 		colSubject_y_s.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_y_s"));
 		colClass_point.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("class_point"));
 	//	colGrade.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("grade"));
+		colSubject_day.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_day"));
+		
+		colSubject_code1.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_code"));
+		colSubject_name1.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_name"));		
+		colSubject_explain1.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_explain"));
+		colSubject_group_code1.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_group_code"));		
+		colSubject_start_day1.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_start_day"));
+		colSubject_end_day1.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_end_day"));
+		colSubject_start_time1.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_start_time"));
+		colSubject_end_time1.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_end_time"));
+		colSubject_y_s1.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_y_s"));
+		colClass_point1.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("class_point"));
+	//	colGrade1.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("grade"));
+		colSubject_day1.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_day"));
 		
 	}
 

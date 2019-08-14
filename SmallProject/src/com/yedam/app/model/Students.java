@@ -44,12 +44,12 @@ public class Students
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
-	
 	@Override
 	public String toString() {
 		return "Students [std_id=" + std_id + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNum="
 				+ phoneNum + ", major=" + major + ", passwd=" + passwd + "]";
 	}
+	
 	
 	
 	
