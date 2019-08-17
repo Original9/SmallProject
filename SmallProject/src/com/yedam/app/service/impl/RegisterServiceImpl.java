@@ -2,6 +2,7 @@ package com.yedam.app.service.impl;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.yedam.app.common.DAO;
@@ -18,11 +19,11 @@ public class RegisterServiceImpl implements RegisterService
 	}
 
 	@Override
-	public List<Register_Subject> ResiterOfList() {
+	public ArrayList<Register_Subject> ResiterOfList() {
 		Connection conn = DAO.getConnect();
-		List<Register_Subject> list = null;
+		ArrayList<Register_Subject> list = null;
 		try {
-			list = registerDAO.selectAll(conn);
+			list = registerDAO.selectAll();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			

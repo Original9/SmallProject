@@ -5,13 +5,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.yedam.app.Observable.Ob_subject;
 import com.yedam.app.common.DAO;
+import com.yedam.app.model.Register_Subject;
 import com.yedam.app.model.Students;
 import com.yedam.app.model.Subject;
+import com.yedam.app.service.impl.RegisterDAO;
 import com.yedam.app.service.impl.SubjectDAO;
 
 import javafx.collections.FXCollections;
@@ -80,12 +84,16 @@ public class SubjectController implements Initializable
 	
 	private Alert alert;
 	SubjectDAO subjectDAO = new SubjectDAO();
+	RegisterDAO registerDAO = new RegisterDAO();
 	
 	@FXML
 	protected void getInformation1(MouseEvent event)
 	{
+		if(tableView1.getSelectionModel().getSelectedItem() != null)
+		{
+			txtSubject_register_delete.setText(tableView1.getSelectionModel().getSelectedItem().getSubject_code());			
+		}	
 		
-		txtSubject_register_delete.setText(tableView1.getSelectionModel().getSelectedItem().getSubject_code());
 	}
 	
 	@FXML
@@ -140,12 +148,23 @@ public class SubjectController implements Initializable
 				Subject subject_temp = subjectDAO.selectOne(add_value);	
 				for(int i = 0 ; i< register_list.size();i++)
 				{
-					if(register_list.get(i).getSubject_code().equals(add_value))
+					if(register_list.get(i).getSubject_day().equals(subject_temp.getSubject_day()) && register_list.get(i).getSubject_start_time().equals(subject_temp.getSubject_start_time()))
 					{
 						Alert alert = new Alert(AlertType.INFORMATION);
 						alert.setTitle("Program Information");
 						alert.setHeaderText("경고");
-						alert.setContentText("이미 등록되어 있습니다.");
+						alert.setContentText("Time overlap! Please Check time! -");
+						alert.show();
+						check = false;
+						break;
+					}
+					
+					if(register_list.get(i).getSubject_code().equals(add_value))
+					{
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Program Information");
+						alert.setHeaderText("warnning!!");
+						alert.setContentText("This subject is already registered!");
 						alert.show();
 						check = false;
 						break;
@@ -153,6 +172,7 @@ public class SubjectController implements Initializable
 				}
 				if(check)
 				{
+					// select one 해서 시간 비교해보고 넣으면 될거 같은데 
 					register_list.add(subject_temp);					
 				}
 				
@@ -165,6 +185,33 @@ public class SubjectController implements Initializable
 			
 			
 		}
+		
+	}
+	
+	@FXML
+	protected void add_std_register_list(ActionEvent event)
+	{
+		SimpleDateFormat sd = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+
+		String str = sd.format(new Date()); // 0000년 00월 00 일 00:00:00 형식으로 얻어옴
+
+		
+		for(int i = 0; i < register_list.size(); i++)
+		{
+			Register_Subject rs = new Register_Subject();
+			
+			rs.setSubject_code(register_list.get(i).getSubject_code());
+			rs.setStd_id(LoginController.connectId);
+			rs.setRegister_date(str);
+			
+			registerDAO.insert_register_subject(rs);
+		}
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Program Information");
+		alert.setHeaderText("Complete");
+		alert.setContentText("수강신청 목록에 등록되었습니다.");
+		alert.show();
+		
 		
 	}
 	
@@ -223,7 +270,11 @@ public class SubjectController implements Initializable
 	@FXML
 	protected void getInformation(MouseEvent event)
 	{
-		txtSubject_code_register.setText(tableView.getSelectionModel().getSelectedItem().getSubject_code());
+		if(tableView.getSelectionModel().getSelectedItem() != null)
+		{
+			txtSubject_code_register.setText(tableView.getSelectionModel().getSelectedItem().getSubject_code());			
+		}
+		
 
 	}
 	

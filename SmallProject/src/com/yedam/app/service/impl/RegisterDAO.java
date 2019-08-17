@@ -7,12 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.yedam.app.common.DAO;
 import com.yedam.app.model.Register_Subject;
 
 public class RegisterDAO 
 {
-	public List<Register_Subject> selectAll(Connection conn) throws SQLException
+	public ArrayList<Register_Subject> selectAll() throws SQLException
 	{
+		Connection conn = DAO.getConnect();
 		Register_Subject temp_r = null;
 		ArrayList<Register_Subject> list = new ArrayList<>();
 		String sql = "select * from register_subject_class";
@@ -34,6 +36,47 @@ public class RegisterDAO
 		
 		
 		return list;
+	}
+	
+	public void insert_register_subject(Register_Subject register_subject)
+	{ // subject_code is foreign key from subject now, so not able to overlap code key if i connected other std_id.
+		// 
+		Connection conn = DAO.getConnect();
+		
+		String sql = "insert into register_subject_class values(?,?,?)";
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, register_subject.getSubject_code());
+			pstmt.setString(2, register_subject.getStd_id());
+			pstmt.setString(3, register_subject.getRegister_date());
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	public void init_register_subject()
+	{
+		Connection conn = DAO.getConnect();
+		
+		String sql = "truncate table register_subject_class"; // 테이블을 선택해서 초기화 가능한지 확인 
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.executeUpdate();
+			System.out.println("수강신청하기 전에 초기화");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 
