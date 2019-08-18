@@ -7,8 +7,11 @@ import javafx.fxml.Initializable;
 
 public class AdministratorController implements Initializable  {
 
+	
+	// register_subject_class 넣는곧 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL location, ResourceBundle resources)
+	{
 		
 	}
 

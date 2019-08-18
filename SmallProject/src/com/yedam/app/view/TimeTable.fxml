@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yedam.app.view.TimeTableController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="root" stylesheets="@timetableBackground.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yedam.app.view.TimeTableController">
    <children>
-      <TableView fx:id="tableView" fixedCellSize="-20.0" layoutX="37.0" layoutY="104.0" prefHeight="149.0" prefWidth="734.0">
+      <TableView fx:id="tableView" fixedCellSize="-20.0" layoutX="14.0" layoutY="92.0" prefHeight="149.0" prefWidth="734.0">
         <columns>
           <TableColumn fx:id="colstart_time" minWidth="80.0" text="Start_time" />
             <TableColumn fx:id="colend_time" minWidth="80.0" text="End_time" />
