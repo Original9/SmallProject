@@ -70,7 +70,7 @@ public class RootController implements Initializable {
 
 	public void handlePageSubject(ActionEvent actionEvent) {
 		try {
-			BorderPane subjectview = FXMLLoader.load(getClass().getResource("SubjectApply.fxml"));
+			AnchorPane subjectview = FXMLLoader.load(getClass().getResource("SubjectApply.fxml"));
 			borderPane.setCenter(subjectview);
 		} catch (Exception e) {
 			e.printStackTrace();

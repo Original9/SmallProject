@@ -1,47 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="800.0" minWidth="850.0" prefHeight="768.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yedam.app.view.SubjectController">
+<AnchorPane minHeight="800.0" minWidth="850.0" prefHeight="768.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yedam.app.view.SubjectController">
          <children>
             <TableView fx:id="tableView1" layoutX="25.0" layoutY="487.0" onMouseClicked="#getInformation1" prefHeight="195.0" prefWidth="790.0" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="487.0">
               <columns>
-                  <TableColumn fx:id="colSubject_code1" prefWidth="53.0" text="과목코드" />
-                <TableColumn fx:id="colSubject_name1" prefWidth="45.0" text="과목" />
-                <TableColumn fx:id="colSubject_explain1" prefWidth="33.0" text="설명" />
-                  <TableColumn fx:id="colSubject_group_code1" prefWidth="88.0" text="그룹코드" />
-                  <TableColumn fx:id="colSubject_start_day1" prefWidth="75.0" text="시작날짜" />
-                  <TableColumn fx:id="colSubject_end_day1" prefWidth="76.0" text="종료날짜" />
-                  <TableColumn fx:id="colSubject_start_time1" maxWidth="100.0" prefWidth="237.0" text="시작시간" />
-                  <TableColumn fx:id="colSubject_end_time1" minWidth="0.0" prefWidth="66.0" text="종료시간" />
-                  <TableColumn fx:id="colClass_point1" minWidth="4.0" prefWidth="64.0" text="학점" />
-                  <TableColumn fx:id="colSubject_day1" minWidth="4.0" prefWidth="74.0" text="요일" />
-                  <TableColumn fx:id="colSubject_y_s1" minWidth="4.0" prefWidth="101.0" text="y_s" />
+                  <TableColumn fx:id="colSubject_code1" prefWidth="64.0" text="과목코드" />
+                <TableColumn fx:id="colSubject_name1" prefWidth="144.0" text="과목" />
+                <TableColumn fx:id="colSubject_explain1" prefWidth="170.0" text="설명" />
+                  <TableColumn fx:id="colSubject_group_code1" prefWidth="55.0" text="그룹코드" />
+                  <TableColumn fx:id="colSubject_start_day1" prefWidth="59.0" text="시작날짜" />
+                  <TableColumn fx:id="colSubject_end_day1" prefWidth="62.0" text="종료날짜" />
+                  <TableColumn fx:id="colSubject_start_time1" maxWidth="247.0" prefWidth="59.0" text="시작시간" />
+                  <TableColumn fx:id="colSubject_end_time1" minWidth="0.0" prefWidth="57.0" text="종료시간" />
+                  <TableColumn fx:id="colClass_point1" minWidth="4.0" prefWidth="31.0" text="학점" />
+                  <TableColumn fx:id="colSubject_day1" minWidth="4.0" prefWidth="35.0" text="요일" />
+                  <TableColumn fx:id="colSubject_y_s1" minWidth="4.0" prefWidth="60.0" text="y_s" />
               </columns>
             </TableView>
             <TableView fx:id="tableView" layoutX="23.0" layoutY="55.0" onMouseClicked="#getInformation" prefHeight="343.0" prefWidth="813.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="55.0">
               <columns>
-                <TableColumn fx:id="colSubject_code" prefWidth="79.0" text="과목코드" />
-                  <TableColumn fx:id="colSubject_name" prefWidth="85.0" text="과목" />
-                  <TableColumn fx:id="colSubject_explain" prefWidth="63.0" text="설명" />
-                <TableColumn fx:id="colSubject_group_code" prefWidth="58.0" text="그룹코드" />
-                  <TableColumn fx:id="colSubject_start_day" prefWidth="147.0" text="시작날짜" />
-                  <TableColumn fx:id="colSubject_end_day" prefWidth="88.0" text="종료날짜" />
-                  <TableColumn fx:id="colSubject_start_time" prefWidth="82.0" text="시작시간" />
-                  <TableColumn fx:id="colSubject_end_time" prefWidth="55.0" text="종료시간" />
-                  <TableColumn fx:id="colClass_point" prefWidth="56.0" text="학점" />
-                  <TableColumn fx:id="colSubject_day" prefWidth="39.0" text="요일" />
-                  <TableColumn fx:id="colSubject_y_s" prefWidth="39.0" text="y_s" />
+                <TableColumn fx:id="colSubject_code" prefWidth="67.0" text="과목코드" />
+                  <TableColumn fx:id="colSubject_name" prefWidth="149.0" text="과목" />
+                  <TableColumn fx:id="colSubject_explain" prefWidth="179.0" text="설명" />
+                <TableColumn fx:id="colSubject_group_code" prefWidth="60.0" text="그룹코드" />
+                  <TableColumn fx:id="colSubject_start_day" prefWidth="59.0" text="시작날짜" />
+                  <TableColumn fx:id="colSubject_end_day" prefWidth="57.0" text="종료날짜" />
+                  <TableColumn fx:id="colSubject_start_time" prefWidth="59.0" text="시작시간" />
+                  <TableColumn fx:id="colSubject_end_time" prefWidth="56.0" text="종료시간" />
+                  <TableColumn fx:id="colClass_point" prefWidth="42.0" text="학점" />
+                  <TableColumn fx:id="colSubject_day" prefWidth="33.0" text="요일" />
+                  <TableColumn fx:id="colSubject_y_s" prefWidth="61.0" text="y_s" />
               </columns>
             </TableView>
-            <ChoiceBox layoutX="131.0" layoutY="19.0" prefWidth="150.0" AnchorPane.leftAnchor="131.0" AnchorPane.topAnchor="19.0" />
-            <Label layoutX="42.0" layoutY="15.0" prefHeight="31.0" prefWidth="89.0" text="       검색" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="15.0" />
+            <Label layoutX="26.0" layoutY="15.0" prefHeight="31.0" prefWidth="147.0" text="수강신청 페이지" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="15.0">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
             <Label layoutX="42.0" layoutY="444.0" prefHeight="15.0" prefWidth="57.0" text="학생정보" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="444.0" />
             <TextField fx:id="txStd_info" editable="false" layoutX="105.0" layoutY="440.0" prefHeight="23.0" prefWidth="679.0" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="440.0" />
             <Button layoutX="764.0" layoutY="405.0" mnemonicParsing="false" onAction="#getListOfRegisterSubject" text="추가" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="405.0" />
@@ -50,7 +52,7 @@
             <Label layoutX="567.0" layoutY="409.0" text="과목코드" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="409.0" />
             <TextField fx:id="txtSubject_code_register" layoutX="622.0" layoutY="405.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="405.0" />
             <Button layoutX="679.0" layoutY="722.0" mnemonicParsing="false" onAction="#init_register_list" prefHeight="23.0" prefWidth="52.0" text="초기화" AnchorPane.bottomAnchor="23.0" AnchorPane.rightAnchor="109.0" />
-            <Button layoutX="304.0" layoutY="19.0" mnemonicParsing="false" onAction="#getListSuject" text="전체조회" AnchorPane.leftAnchor="304.0" AnchorPane.topAnchor="19.0" />
+            <Button layoutX="762.0" layoutY="19.0" mnemonicParsing="false" onAction="#getListSuject" text="전체조회" AnchorPane.leftAnchor="762.0" AnchorPane.topAnchor="19.0" />
       <TextField fx:id="txtSubject_register_delete" editable="false" layoutX="646.0" layoutY="714.0" AnchorPane.bottomAnchor="63.0" AnchorPane.rightAnchor="66.0" />
          </children>
       </AnchorPane>
