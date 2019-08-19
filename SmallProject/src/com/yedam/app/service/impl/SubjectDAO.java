@@ -130,8 +130,8 @@ public class SubjectDAO
 				temp_subject.setSubject_day(rs.getString("subject_day"));
 				
 				//System.out.println(temp_subject);
-				list.add(temp_subject);
-								
+				list.add(temp_subject);								
+				
 			}			
 			rs.close();
 

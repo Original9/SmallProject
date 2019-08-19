@@ -289,6 +289,7 @@ public class TimeTableController implements Initializable
 						temp_subject.setClass_point(rs.getString("class_point"));
 						temp_subject.setGrade(rs.getString("grade"));
 						temp_subject.setSubject_day(rs.getString("subject_day"));
+						System.out.println(temp_subject);
 						applicableList.add(temp_subject);
 					}
 					tableView1_tt.setItems(FXCollections.observableArrayList(applicableList));
