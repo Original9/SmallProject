@@ -16,10 +16,7 @@ public class TimeTableDAO
 	public void updateTimeTable(ArrayList<TimeTable> list)
 	{
 		Connection conn =  DAO.getConnect();
-		for(TimeTable tb : list) // timetable list에 있는 값을 데이터베이스로 업데이트 하자 이거 업데이트하고 비어있는 시간에 들을수 있는 과목을 subject테이블과 조인해서 밑에 view창에 띄우면 끝 
-		{
-			System.out.println(tb);
-		}
+		
 		for(int i = 0 ; i<list.size() ; i++)
 		{
 			
