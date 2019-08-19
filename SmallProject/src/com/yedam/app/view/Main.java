@@ -11,6 +11,7 @@ public class Main extends Application {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
+	private AnchorPane loginlayout;
 
 	public BorderPane getRootLayout() {
 		return rootLayout;
@@ -29,34 +30,46 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primarystage) throws Exception {
 		this.primaryStage = primarystage;
-		initRootLayout();
-//		showSubjectApply();
-		showLogin();
+//		initRootLayout();
+		initloginlayout();
 
 	}
-
-	public void initRootLayout() {
+	public void initloginlayout() {
 		try {
-			rootLayout = FXMLLoader.load(getClass().getResource("root.fxml"));
-			Scene scene = new Scene(rootLayout, 850, 800);
-			primaryStage.setTitle("Root");
+			loginlayout = FXMLLoader.load(getClass().getResource("Login.fxml"));
+			Scene scene = new Scene(loginlayout);
+			primaryStage.setTitle("Login");
 			primaryStage.setScene(scene);
 			primaryStage.show();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	public void showLogin() {
-		try {
-			AnchorPane loginview = FXMLLoader.load(getClass().getResource("Login.fxml"));
-			rootLayout.setCenter(loginview);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
+	
+	
+//	public void initRootLayout() {
+//		try {
+//			rootLayout = FXMLLoader.load(getClass().getResource("root.fxml"));
+//			Scene scene = new Scene(rootLayout);
+//			primaryStage.setTitle("Root");
+//			primaryStage.setScene(scene);
+//			primaryStage.show();
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//	}
+
+//	public void showLogin() {
+//		try {
+//			AnchorPane loginview = FXMLLoader.load(getClass().getResource("Login.fxml"));
+//			rootLayout.setCenter(loginview);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	public static void main(String[] args) {
 		launch(args);
