@@ -209,13 +209,14 @@ public class TimeTableController implements Initializable
 				
 			}
 			
+			timetableDAO.updateTimeTable(list);
 			
-			for(TimeTable tb : list)
+			for(TimeTable tb : list) // timetable list에 있는 값을 데이터베이스로 업데이트 하자 이거 업데이트하고 비어있는 시간에 들을수 있는 과목을 subject테이블과 조인해서 밑에 view창에 띄우면 끝 
 			{
 				System.out.println(tb);
 			}
-			// 이걸 TimeTable에 업데이트해서 빈 시간에 어떤 시간표를 넣을수 있을지 확인하자. 
-			
+			// 이걸 TimeTable에 업데이트해서 빈 시간에 어떤 시간표를 넣을수 있을지 확인하자.
+						
 			tableView.setItems(FXCollections.observableArrayList(list));
 			
 		}catch(SQLException e) {

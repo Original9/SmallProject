@@ -10,8 +10,197 @@ import com.yedam.app.common.DAO;
 import com.yedam.app.model.Subject;
 import com.yedam.app.model.TimeTable;
 
+
 public class TimeTableDAO 
 {
+	public void updateTimeTable(ArrayList<TimeTable> list)
+	{
+		Connection conn =  DAO.getConnect();
+		for(TimeTable tb : list) // timetable list에 있는 값을 데이터베이스로 업데이트 하자 이거 업데이트하고 비어있는 시간에 들을수 있는 과목을 subject테이블과 조인해서 밑에 view창에 띄우면 끝 
+		{
+			System.out.println(tb);
+		}
+		for(int i = 0 ; i<list.size() ; i++)
+		{
+			
+			if(list.get(i).getMonday() != null)
+			{				
+				String sql = null;
+				if(i == 0)
+				{					
+					//update 9시 월요일 
+					sql = "update time_table set monday = ? where start_time = '9:00'";					
+				}
+				if(i == 1)
+				{
+					//update 11시 월요일
+					System.out.println(list.get(1));
+					sql = "update time_table set monday = ? where start_time = '11:00'";
+				}
+				if(i == 2)
+				{
+					//update 13시 월요일					
+					sql = "update time_table set monday = ? where start_time = '13:00'";					
+				}
+				if(i == 3)
+				{
+					//update 15시 월요일
+					sql = "update time_table set monday = ? where start_time = '15:00'";
+				}
+				PreparedStatement pstmt;
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, list.get(i).getMonday());
+					pstmt.executeUpdate();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			if(list.get(i).getTuseday() != null)
+			{
+				String sql = null;
+				if(i == 0)
+				{					
+					//update 9시 화요일 
+					sql = "update time_table set tuesday = ? where start_time = '9:00'";					
+				}
+				if(i == 1)
+				{
+					//update 11시 화요일
+					System.out.println("ffffffffffffff");
+					sql = "update time_table set tuesday = ? where start_time = '11:00'";
+				}
+				if(i == 2)
+				{
+					//update 13시 화요일					
+					sql = "update time_table set tuesday = ? where start_time = '13:00'";					
+				}
+				if(i == 3)
+				{
+					//update 15시 화요일
+					sql = "update time_table set tuesday = ? where start_time = '15:00'";
+				}
+				PreparedStatement pstmt;
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, list.get(i).getTuseday());
+					pstmt.executeUpdate();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(list.get(i).getWednesday() != null)
+			{
+				//update
+				String sql = null;
+				if(i == 0)
+				{					
+					//update 9시 화요일 
+					sql = "update time_table set wednesday = ? where start_time = '9:00'";					
+				}
+				if(i == 1)
+				{
+					//update 11시 화요일
+					sql = "update time_table set wednesday = ? where start_time = '11:00'";
+				}
+				if(i == 2)
+				{
+					//update 13시 화요일					
+					sql = "update time_table set wednesday = ? where start_time = '13:00'";					
+				}
+				if(i == 3)
+				{
+					//update 15시 화요일
+					sql = "update time_table set wednesday = ? where start_time = '15:00'";
+				}
+				PreparedStatement pstmt;
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, list.get(i).getWednesday());
+					pstmt.executeUpdate();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(list.get(i).getThursday() != null)
+			{
+				String sql = null;
+				if(i == 0)
+				{					
+					//update 9시 화요일 
+					sql = "update time_table set thursday = ? where start_time = '9:00'";					
+				}
+				if(i == 1)
+				{
+					//update 11시 화요일
+					sql = "update time_table set thursday = ? where start_time = '11:00'";
+				}
+				if(i == 2)
+				{
+					//update 13시 화요일					
+					sql = "update time_table set thursday = ? where start_time = '13:00'";					
+				}
+				if(i == 3)
+				{
+					//update 15시 화요일
+					sql = "update time_table set thursday = ? where start_time = '15:00'";
+				}
+				PreparedStatement pstmt;
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, list.get(i).getThursday());
+					pstmt.executeUpdate();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			if(list.get(i).getFriday() != null)
+			{
+				String sql = null;
+				if(i == 0)
+				{					
+					//update 9시 화요일 
+					sql = "update time_table set friday = ? where start_time = '9:00'";					
+				}
+				if(i == 1)
+				{
+					//update 11시 화요일
+					sql = "update time_table set friday = ? where start_time = '11:00'";
+				}
+				if(i == 2)
+				{
+					//update 13시 화요일					
+					sql = "update time_table set friday = ? where start_time = '13:00'";					
+				}
+				if(i == 3)
+				{
+					//update 15시 화요일
+					sql = "update time_table set frisday = ? where start_time = '15:00'";
+				}
+				PreparedStatement pstmt;
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, list.get(i).getFriday());
+					pstmt.executeUpdate();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			
+		}
+		
+		
+		
+	}
+	
 	public ArrayList<TimeTable> selectAll() throws SQLException
 	{
 		Connection conn = DAO.getConnect();

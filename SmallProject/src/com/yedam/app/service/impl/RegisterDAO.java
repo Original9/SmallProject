@@ -78,6 +78,21 @@ public class RegisterDAO
 			e.printStackTrace();
 		}
 	}
+	
+	public void delete_register_subject(String delete_code)
+	{
+		Connection conn = DAO.getConnect();
+		String sql = "delete from register_subject_class  where subject_code = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, delete_code);
+			pstmt.executeUpdate();
+			System.out.println("한건 삭제!");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 
 }

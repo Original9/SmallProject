@@ -80,11 +80,53 @@ public class SubjectController implements Initializable
 	@FXML TableColumn<Ob_subject, String> colGrade1;
 	@FXML TableColumn<Ob_subject,String> colSubject_day1;
 	
-	ArrayList<Subject> register_list = new ArrayList<>(); // 나중에 시간 되면 0번째 값을 지정해 놓자 
+	ArrayList<Subject> register_list = new ArrayList<>(); // 이미 데이터 베이스에 있는 값들을 들고오는 배열 
+	//ArrayList<Subject> register_list_new = new ArrayList<>(); // 수강신청 새로 넣는곳
 	
 	private Alert alert;
 	SubjectDAO subjectDAO = new SubjectDAO();
 	RegisterDAO registerDAO = new RegisterDAO();
+	
+	public void getRegister_list()
+	{
+		Connection conn = DAO.getConnect();		
+		Subject temp_subject = null;
+	    String sql = "select * from subject a,register_subject_class b where a.subject_code = b.subject_code";
+	    PreparedStatement pstmt;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next())
+			{
+				temp_subject = new Subject();				
+				temp_subject.setSubject_code(rs.getString("subject_code"));
+				temp_subject.setSubject_name(rs.getString("subject_name"));
+				temp_subject.setSubject_explain(rs.getString("subject_explain"));
+				temp_subject.setSubject_group_code(rs.getString("subject_group_code"));
+				temp_subject.setSubject_start_day(rs.getString("subject_start_day"));
+				temp_subject.setSubject_end_day(rs.getString("subject_end_day"));
+				temp_subject.setSubject_start_time(rs.getString("subject_start_time"));
+				temp_subject.setSubject_end_time(rs.getString("subject_end_time"));
+				temp_subject.setSubject_y_s(rs.getString("subject_y_s"));
+				temp_subject.setClass_point(rs.getString("class_point"));
+				temp_subject.setGrade(rs.getString("grade"));
+				temp_subject.setSubject_day(rs.getString("subject_day"));
+				
+				System.out.println(temp_subject);// 불러오는거 확인 인제 뿌려주기만하면덴다.
+				register_list.add(temp_subject);
+								
+			}			
+			rs.close();
+			tableView1.setItems(FXCollections.observableArrayList(register_list));
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    
+		
+	}
+	
 	
 	@FXML
 	protected void getInformation1(MouseEvent event)
@@ -100,6 +142,8 @@ public class SubjectController implements Initializable
 	protected void delete_register_list(ActionEvent event) 
 	{		 		
 		String delete_code = txtSubject_register_delete.getText();
+		registerDAO.delete_register_subject(delete_code);
+		
 		if(delete_code != null)
 		{
 			for(int i = 0 ; i < register_list.size(); i++)
@@ -146,7 +190,7 @@ public class SubjectController implements Initializable
 			try {
 								
 				Subject subject_temp = subjectDAO.selectOne(add_value);	
-				for(int i = 0 ; i< register_list.size();i++)
+				for(int i = 0 ; i< register_list.size();i++) // 밑에 추가된 창에도 없어야 하고 
 				{
 					if(register_list.get(i).getSubject_day().equals(subject_temp.getSubject_day()) && register_list.get(i).getSubject_start_time().equals(subject_temp.getSubject_start_time()))
 					{
@@ -168,7 +212,8 @@ public class SubjectController implements Initializable
 						alert.show();
 						check = false;
 						break;
-					}					
+					}
+					
 				}
 				if(check)
 				{
@@ -308,6 +353,8 @@ public class SubjectController implements Initializable
 	//	colGrade1.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("grade"));
 		colSubject_day1.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_day"));
 		
+		//이미 수강신청해놓은 수강신청 목록 띄우기
+		getRegister_list();
 	}
 
 }
