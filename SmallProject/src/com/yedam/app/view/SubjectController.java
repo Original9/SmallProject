@@ -91,10 +91,11 @@ public class SubjectController implements Initializable
 	{
 		Connection conn = DAO.getConnect();		
 		Subject temp_subject = null;
-	    String sql = "select * from subject a,register_subject_class b where a.subject_code = b.subject_code";
+	    String sql = "select * from subject a,register_subject_class b where a.subject_code = b.subject_code and b.std_id = ? ";
 	    PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,LoginController.getConn_info());
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next())
 			{
@@ -265,7 +266,7 @@ public class SubjectController implements Initializable
 	{
 		
 		try {			
-			ArrayList<Subject> list = subjectDAO.selectAll();
+			ArrayList<Subject> list = subjectDAO.selectAll();// 그냥 subject class를 넣은 ArrayList
 			
 			tableView.setItems(FXCollections.observableArrayList(list));
 			

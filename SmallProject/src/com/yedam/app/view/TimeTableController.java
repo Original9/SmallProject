@@ -8,10 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import com.yedam.app.Observable.Ob_subject;
 import com.yedam.app.Observable.Ob_time_table;
 import com.yedam.app.common.DAO;
 import com.yedam.app.model.Register_Subject;
 import com.yedam.app.model.Students;
+import com.yedam.app.model.Subject;
 import com.yedam.app.model.TimeTable;
 import com.yedam.app.service.impl.RegisterDAO;
 import com.yedam.app.service.impl.TimeTableDAO;
@@ -30,6 +32,7 @@ public class TimeTableController implements Initializable
 	@FXML private TextField txStd_info;
 	
 	@FXML private TableView<TimeTable> tableView;
+	@FXML private TableView<Subject> tableView1;
 	
 	@FXML TableColumn<Ob_time_table,String> colstart_time;
 	@FXML TableColumn<Ob_time_table,String> colend_time;
@@ -42,6 +45,20 @@ public class TimeTableController implements Initializable
 	
 	@FXML TableColumn<Ob_time_table,String> colsubject_name;
 	@FXML TableColumn<Ob_time_table,String> colsubject_day;
+	
+	@FXML TableColumn<Ob_subject, String> colSubject_code;
+	@FXML TableColumn<Ob_subject, String> colSubject_name;
+	@FXML TableColumn<Ob_subject, String> colSubject_explain;
+	@FXML TableColumn<Ob_subject, String> colSubject_group_code;
+	@FXML TableColumn<Ob_subject, String> colSubject_start_day;
+	@FXML TableColumn<Ob_subject, String> colSubject_end_day;
+	@FXML TableColumn<Ob_subject, String> colSubject_start_time;
+	@FXML TableColumn<Ob_subject, String> colSubject_end_time;
+	@FXML TableColumn<Ob_subject, String> colSubject_y_s;
+	@FXML TableColumn<Ob_subject, String> colClass_point;
+	@FXML TableColumn<Ob_subject, String> colGrade;
+	@FXML TableColumn<Ob_subject,String> colSubject_day;
+	
 	
 	ArrayList<TimeTable> timetable = new ArrayList<>();
 	
@@ -224,6 +241,46 @@ public class TimeTableController implements Initializable
 		}
 		
 	}
+	ArrayList<Subject> applicableList = new ArrayList<>();
+	public void Applicable_subjects()
+	{
+		Connection conn = DAO.getConnect();		
+		Subject temp_subject = null;
+	    String sql = "select * from subject a,register_subject_class b where a.subject_code = b.subject_code and b.std_id = ? ";
+	    PreparedStatement pstmt;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,LoginController.getConn_info());
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next())
+			{
+				temp_subject = new Subject();				
+				temp_subject.setSubject_code(rs.getString("subject_code"));
+				temp_subject.setSubject_name(rs.getString("subject_name"));
+				temp_subject.setSubject_explain(rs.getString("subject_explain"));
+				temp_subject.setSubject_group_code(rs.getString("subject_group_code"));
+				temp_subject.setSubject_start_day(rs.getString("subject_start_day"));
+				temp_subject.setSubject_end_day(rs.getString("subject_end_day"));
+				temp_subject.setSubject_start_time(rs.getString("subject_start_time"));
+				temp_subject.setSubject_end_time(rs.getString("subject_end_time"));
+				temp_subject.setSubject_y_s(rs.getString("subject_y_s"));
+				temp_subject.setClass_point(rs.getString("class_point"));
+				temp_subject.setGrade(rs.getString("grade"));
+				temp_subject.setSubject_day(rs.getString("subject_day"));
+				
+				System.out.println(temp_subject);// 불러오는거 확인 인제 뿌려주기만하면덴다.
+				applicableList.add(temp_subject);
+								
+			}			
+			rs.close();
+			tableView1.setItems(FXCollections.observableArrayList(applicableList));
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) 
@@ -237,6 +294,20 @@ public class TimeTableController implements Initializable
 		colThursday.setCellValueFactory(new PropertyValueFactory<Ob_time_table,String>("Thursday"));
 		colFriday.setCellValueFactory(new PropertyValueFactory<Ob_time_table,String>("Friday"));
 		getListSubject();
+		
+		
+		colSubject_code.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_code"));
+		colSubject_name.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_name"));		
+		colSubject_explain.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_explain"));
+		colSubject_group_code.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_group_code"));		
+		colSubject_start_day.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_start_day"));
+		colSubject_end_day.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_end_day"));
+		colSubject_start_time.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_start_time"));
+		colSubject_end_time.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_end_time"));
+		colSubject_y_s.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_y_s"));
+		colClass_point.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("class_point"));
+	//	colGrade.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("grade"));
+		colSubject_day.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_day"));
 		
 		
 	}
