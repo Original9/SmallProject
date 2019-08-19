@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javax.security.auth.kerberos.KerberosKey;
+
 import com.yedam.app.common.DAO;
 
 import javafx.event.ActionEvent;
@@ -17,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -33,6 +36,7 @@ public class LoginController implements Initializable {
 	private TextField txtUserName;
 	@FXML
 	private TextField txtPassword;
+
 
 	// 수강신청 창으로 학생정보를 넘기기 위한 변수
 	public static String connectId;
@@ -156,5 +160,15 @@ public class LoginController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 	}
+	public void handleEnterkey(KeyEvent event) {
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 
 }
+
+
