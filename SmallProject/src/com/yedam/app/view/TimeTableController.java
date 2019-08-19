@@ -59,6 +59,8 @@ public class TimeTableController implements Initializable
 	@FXML TableColumn<Ob_subject, String> colGrade_tt;
 	@FXML TableColumn<Ob_subject,String> colSubject_day_tt;
 	
+	@FXML TextField point;
+	int enable_point  = 15;
 	
 	ArrayList<TimeTable> timetable = new ArrayList<>();
 	ArrayList<TimeTable> list = new ArrayList<>();
@@ -525,12 +527,36 @@ public class TimeTableController implements Initializable
 		colSubject_end_time_tt.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_end_time"));
 		colSubject_y_s_tt.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_y_s"));
 		colClass_point_tt.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("class_point"));
-		colSubject_day_tt.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_day"));
-		Applicable_subjects();
+		colSubject_day_tt.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_day"));		
 		
+		//수강가능한 학점 조회해서 띄우기 
+		showEnable_point();
+		if(Integer.parseInt(point.getText()) != 0 )
+		{
+			Applicable_subjects();			
+		}
 		
 	}
 	
-	
+	public void showEnable_point()
+	{
+		Connection conn = DAO.getConnect();
+		String sql = "select * from subject a,register_subject_class b where a.subject_code = b.subject_code and b.std_id = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, LoginController.getConn_info());
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next())
+			{				
+				enable_point =  enable_point - Integer.parseInt(rs.getString("class_point"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		point.setText(String.valueOf( enable_point));
+		
+	}
 	
 }

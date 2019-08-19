@@ -54,5 +54,7 @@
             <Font size="36.0" />
          </font>
       </Label>
+      <TextField fx:id="point" layoutX="698.0" layoutY="306.0" />
+      <Label layoutX="615.0" layoutY="302.0" prefHeight="31.0" prefWidth="72.0" text="신청가능학점" />
    </children>
 </AnchorPane>
