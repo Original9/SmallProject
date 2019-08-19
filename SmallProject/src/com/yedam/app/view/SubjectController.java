@@ -87,6 +87,9 @@ public class SubjectController implements Initializable
 	SubjectDAO subjectDAO = new SubjectDAO();
 	RegisterDAO registerDAO = new RegisterDAO();
 	
+	@FXML TextField point;
+	int enable_point  = 15;
+	
 	public void getRegister_list()
 	{
 		Connection conn = DAO.getConnect();		
@@ -151,6 +154,7 @@ public class SubjectController implements Initializable
 			{
 				if(register_list.get(i).getSubject_code().equals(delete_code))
 				{
+					point.setText(String.valueOf(Integer.parseInt(point.getText())+Integer.parseInt(register_list.get(i).getClass_point())));   
 					register_list.remove(i);
 				}
 			}
@@ -213,9 +217,29 @@ public class SubjectController implements Initializable
 						alert.show();
 						check = false;
 						break;
+					}					
+					
+				}
+				// 시간 겹치는거랑 동일한 과목있는지 확인하는 위의 for문에서 check가 false가아니면 마지막으로 남은 학점을 계산한다. 
+				if(check)
+				{
+					if(Integer.parseInt(point.getText()) - Integer.parseInt( subject_temp.getClass_point()) < 0 )
+					{
+						check = false;
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Program Information");
+						alert.setHeaderText("warnning!!");
+						alert.setContentText("Check your remained grade point !!!");
+						alert.show();
+					}
+					else 
+					{
+						enable_point = 	Integer.parseInt(point.getText())- Integer.parseInt( subject_temp.getClass_point());		
+						point.setText(String.valueOf(enable_point));
 					}
 					
 				}
+				//남은 학점 까지 확인하고 check가 false 가 가니면 리스트에 추가한다.
 				if(check)
 				{
 					// select one 해서 시간 비교해보고 넣으면 될거 같은데 
@@ -358,6 +382,31 @@ public class SubjectController implements Initializable
 		
 		//이미 수강신청해놓은 수강신청 목록 띄우기
 		getRegister_list();
+		
+		//수강가능한 학점 조회해서 띄우기 
+		showEnable_point();
+		
+	}
+	
+	public void showEnable_point()
+	{
+		Connection conn = DAO.getConnect();
+		String sql = "select * from subject a,register_subject_class b where a.subject_code = b.subject_code and b.std_id = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, LoginController.getConn_info());
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next())
+			{				
+				enable_point =  enable_point - Integer.parseInt(rs.getString("class_point"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		point.setText(String.valueOf( enable_point));
+		
 	}
 
 }

@@ -54,5 +54,7 @@
             <Button layoutX="679.0" layoutY="722.0" mnemonicParsing="false" onAction="#init_register_list" prefHeight="23.0" prefWidth="52.0" text="초기화" AnchorPane.bottomAnchor="23.0" AnchorPane.rightAnchor="109.0" />
             <Button layoutX="762.0" layoutY="19.0" mnemonicParsing="false" onAction="#getListSuject" text="전체조회" AnchorPane.leftAnchor="762.0" AnchorPane.topAnchor="19.0" />
       <TextField fx:id="txtSubject_register_delete" editable="false" layoutX="646.0" layoutY="714.0" AnchorPane.bottomAnchor="63.0" AnchorPane.rightAnchor="66.0" />
+      <TextField fx:id="point" layoutX="416.0" layoutY="405.0" />
+      <Label layoutX="333.0" layoutY="401.0" prefHeight="31.0" prefWidth="72.0" text="신청가능학점" />
          </children>
       </AnchorPane>
