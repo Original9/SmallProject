@@ -288,11 +288,106 @@ public class TimeTableController implements Initializable
 						temp_subject.setSubject_y_s(rs.getString("subject_y_s"));
 						temp_subject.setClass_point(rs.getString("class_point"));
 						temp_subject.setGrade(rs.getString("grade"));
-						temp_subject.setSubject_day(rs.getString("subject_day"));
-						System.out.println(temp_subject);
+						temp_subject.setSubject_day(rs.getString("subject_day"));						
 						applicableList.add(temp_subject);
 					}
-					tableView1_tt.setItems(FXCollections.observableArrayList(applicableList));
+					rs.close();
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}			
+
+			}
+			if(list.get(i).getTuseday() == null)
+			{
+				 
+					String sql = null;
+					if (i == 0) {
+						// update 9시 화요일
+						sql = "select * from subject where subject_start_time = '9:00' and subject_day = '화'";
+					}
+					if (i == 1) {
+						// update 11시 화요일
+						sql = "select * from subject where subject_start_time = '11:00' and subject_day = '화'";
+					}
+					if (i == 2) {
+						// update 13시 화요일
+						sql = "select * from subject where subject_start_time = '13:00' and subject_day = '화'";
+					}
+					if (i == 3) {
+						// update 15시 화요일
+						sql = "select * from subject where subject_start_time = '15:00' and subject_day = '화'";
+					}
+					PreparedStatement pstmt;
+					try {
+						pstmt = conn.prepareStatement(sql);
+						ResultSet rs = pstmt.executeQuery();
+						while (rs.next())
+						{
+							temp_subject = new Subject();
+							temp_subject.setSubject_code(rs.getString("subject_code"));
+							temp_subject.setSubject_name(rs.getString("subject_name"));
+							temp_subject.setSubject_explain(rs.getString("subject_explain"));
+							temp_subject.setSubject_group_code(rs.getString("subject_group_code"));
+							temp_subject.setSubject_start_day(rs.getString("subject_start_day"));
+							temp_subject.setSubject_end_day(rs.getString("subject_end_day"));
+							temp_subject.setSubject_start_time(rs.getString("subject_start_time"));
+							temp_subject.setSubject_end_time(rs.getString("subject_end_time"));
+							temp_subject.setSubject_y_s(rs.getString("subject_y_s"));
+							temp_subject.setClass_point(rs.getString("class_point"));
+							temp_subject.setGrade(rs.getString("grade"));
+							temp_subject.setSubject_day(rs.getString("subject_day"));						
+							applicableList.add(temp_subject);
+						}						
+						rs.close();
+
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}	
+				
+				
+			}
+			if (list.get(i).getWednesday() == null) {
+				String sql = null;
+				if (i == 0) {
+					// update 9시 수요일
+					sql = "select * from subject where subject_start_time = '9:00' and subject_day = '수'";
+				}
+				if (i == 1) {
+					// update 11시 수요일
+					sql = "select * from subject where subject_start_time = '11:00' and subject_day = '수'";
+				}
+				if (i == 2) {
+					// update 13시 수요일
+					sql = "select * from subject where subject_start_time = '13:00' and subject_day = '수'";
+				}
+				if (i == 3) {
+					// update 15시 수요일
+					sql = "select * from subject where subject_start_time = '15:00' and subject_day = '수'";
+				}
+				PreparedStatement pstmt;
+				try {
+					pstmt = conn.prepareStatement(sql);
+					ResultSet rs = pstmt.executeQuery();
+					while (rs.next()) {
+						temp_subject = new Subject();
+						temp_subject.setSubject_code(rs.getString("subject_code"));
+						temp_subject.setSubject_name(rs.getString("subject_name"));
+						temp_subject.setSubject_explain(rs.getString("subject_explain"));
+						temp_subject.setSubject_group_code(rs.getString("subject_group_code"));
+						temp_subject.setSubject_start_day(rs.getString("subject_start_day"));
+						temp_subject.setSubject_end_day(rs.getString("subject_end_day"));
+						temp_subject.setSubject_start_time(rs.getString("subject_start_time"));
+						temp_subject.setSubject_end_time(rs.getString("subject_end_time"));
+						temp_subject.setSubject_y_s(rs.getString("subject_y_s"));
+						temp_subject.setClass_point(rs.getString("class_point"));
+						temp_subject.setGrade(rs.getString("grade"));
+						temp_subject.setSubject_day(rs.getString("subject_day"));
+						applicableList.add(temp_subject);
+					}
+					
 					rs.close();
 
 				} catch (SQLException e) {
@@ -302,9 +397,105 @@ public class TimeTableController implements Initializable
 
 			}
 			
+			if (list.get(i).getThursday() == null) {
+				String sql = null;
+				if (i == 0) {
+					// update 9시 목요일
+					sql = "select * from subject where subject_start_time = '9:00' and subject_day = '목'";
+				}
+				if (i == 1) {
+					// update 11시 목요일
+					sql = "select * from subject where subject_start_time = '11:00' and subject_day = '목'";
+				}
+				if (i == 2) {
+					// update 13시 목요일
+					sql = "select * from subject where subject_start_time = '13:00' and subject_day = '목'";
+				}
+				if (i == 3) {
+					// update 15시 목요일
+					sql = "select * from subject where subject_start_time = '15:00' and subject_day = '목'";
+				}
+				PreparedStatement pstmt;
+				try {
+					pstmt = conn.prepareStatement(sql);
+					ResultSet rs = pstmt.executeQuery();
+					while (rs.next())
+					{
+						temp_subject = new Subject();
+						temp_subject.setSubject_code(rs.getString("subject_code"));
+						temp_subject.setSubject_name(rs.getString("subject_name"));
+						temp_subject.setSubject_explain(rs.getString("subject_explain"));
+						temp_subject.setSubject_group_code(rs.getString("subject_group_code"));
+						temp_subject.setSubject_start_day(rs.getString("subject_start_day"));
+						temp_subject.setSubject_end_day(rs.getString("subject_end_day"));
+						temp_subject.setSubject_start_time(rs.getString("subject_start_time"));
+						temp_subject.setSubject_end_time(rs.getString("subject_end_time"));
+						temp_subject.setSubject_y_s(rs.getString("subject_y_s"));
+						temp_subject.setClass_point(rs.getString("class_point"));
+						temp_subject.setGrade(rs.getString("grade"));
+						temp_subject.setSubject_day(rs.getString("subject_day"));						
+						applicableList.add(temp_subject);
+					}					
+					rs.close();
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}			
+
+			}
+			
+			if (list.get(i).getFriday() == null) {
+				String sql = null;
+				if (i == 0) {
+					// update 9시 금요일
+					sql = "select * from subject where subject_start_time = '9:00' and subject_day = '금'";
+				}
+				if (i == 1) {
+					// update 11시 금요일
+					sql = "select * from subject where subject_start_time = '11:00' and subject_day = '금'";
+				}
+				if (i == 2) {
+					// update 13시 금요일
+					sql = "select * from subject where subject_start_time = '13:00' and subject_day = '금'";
+				}
+				if (i == 3) {
+					// update 15시 금요일
+					sql = "select * from subject where subject_start_time = '15:00' and subject_day = '금'";
+				}
+				PreparedStatement pstmt;
+				try {
+					pstmt = conn.prepareStatement(sql);
+					ResultSet rs = pstmt.executeQuery();
+					while (rs.next())
+					{
+						temp_subject = new Subject();
+						temp_subject.setSubject_code(rs.getString("subject_code"));
+						temp_subject.setSubject_name(rs.getString("subject_name"));
+						temp_subject.setSubject_explain(rs.getString("subject_explain"));
+						temp_subject.setSubject_group_code(rs.getString("subject_group_code"));
+						temp_subject.setSubject_start_day(rs.getString("subject_start_day"));
+						temp_subject.setSubject_end_day(rs.getString("subject_end_day"));
+						temp_subject.setSubject_start_time(rs.getString("subject_start_time"));
+						temp_subject.setSubject_end_time(rs.getString("subject_end_time"));
+						temp_subject.setSubject_y_s(rs.getString("subject_y_s"));
+						temp_subject.setClass_point(rs.getString("class_point"));
+						temp_subject.setGrade(rs.getString("grade"));
+						temp_subject.setSubject_day(rs.getString("subject_day"));						
+						applicableList.add(temp_subject);
+					}					
+					rs.close();
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}			
+
+			}
+			
 		}
 		
-		
+		tableView1_tt.setItems(FXCollections.observableArrayList(applicableList));
 		
 	    
 	}
@@ -335,6 +526,7 @@ public class TimeTableController implements Initializable
 		colSubject_y_s_tt.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_y_s"));
 		colClass_point_tt.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("class_point"));
 		colSubject_day_tt.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_day"));
+		Applicable_subjects();
 		
 		
 	}

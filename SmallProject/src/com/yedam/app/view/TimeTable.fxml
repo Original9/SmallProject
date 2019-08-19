@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="850.0" styleClass="root" stylesheets="@timetableBackground.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yedam.app.view.TimeTableController">
    <children>
-      <TableView fx:id="tableView" fixedCellSize="-20.0" layoutX="24.0" layoutY="69.0" prefHeight="397.0" prefWidth="811.0">
+      <TableView fx:id="tableView" fixedCellSize="-20.0" layoutX="24.0" layoutY="69.0" prefHeight="133.0" prefWidth="811.0">
         <columns>
           <TableColumn fx:id="colstart_time" minWidth="80.0" text="Start_time" />
             <TableColumn fx:id="colend_time" minWidth="80.0" text="End_time" />
@@ -34,7 +34,7 @@
          </font>
       </Label>
       <TextField fx:id="txStd_info" blendMode="GREEN" editable="false" layoutX="96.0" layoutY="16.0" prefHeight="23.0" prefWidth="719.0" />
-      <TableView fx:id="tableView1_tt" layoutX="25.0" layoutY="521.0" prefHeight="326.0" prefWidth="811.0">
+      <TableView fx:id="tableView1_tt" layoutX="25.0" layoutY="408.0" prefHeight="439.0" prefWidth="811.0">
          <columns>
             <TableColumn fx:id="colSubject_code_tt" prefWidth="53.0" text="과목코드" />
             <TableColumn fx:id="colSubject_name_tt" prefWidth="45.0" text="과목" />
@@ -49,5 +49,10 @@
             <TableColumn fx:id="colSubject_y_s_tt" minWidth="4.0" prefWidth="101.0" text="y_s" />
          </columns>
       </TableView>
+      <Label layoutX="24.0" layoutY="355.0" prefHeight="42.0" prefWidth="384.0" text="수강신청가능한 목록" textFill="#7a2ce1">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

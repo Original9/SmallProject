@@ -113,7 +113,7 @@ public class SubjectController implements Initializable
 				temp_subject.setGrade(rs.getString("grade"));
 				temp_subject.setSubject_day(rs.getString("subject_day"));
 				
-				System.out.println(temp_subject);// 불러오는거 확인 인제 뿌려주기만하면덴다.
+				//System.out.println(temp_subject);// 불러오는거 확인 인제 뿌려주기만하면덴다.
 				register_list.add(temp_subject);
 								
 			}			
