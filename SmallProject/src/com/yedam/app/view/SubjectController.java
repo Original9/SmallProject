@@ -328,18 +328,7 @@ public class SubjectController implements Initializable
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		ShowStudentInfo();
-		colSubject_code.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_code"));
-		colSubject_name.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_name"));		
-		colSubject_explain.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_explain"));
-		colSubject_group_code.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_group_code"));		
-		colSubject_start_day.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_start_day"));
-		colSubject_end_day.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_end_day"));
-		colSubject_start_time.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_start_time"));
-		colSubject_end_time.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_end_time"));
-		colSubject_y_s.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_y_s"));
-		colClass_point.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("class_point"));
-	//	colGrade.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("grade"));
-		colSubject_day.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_day"));
+		
 		
 		colSubject_code1.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_code"));
 		colSubject_name1.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_name"));		

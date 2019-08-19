@@ -30,8 +30,7 @@ public class TimeTableDAO
 				}
 				if(i == 1)
 				{
-					//update 11시 월요일
-					System.out.println(list.get(1));
+					//update 11시 월요일					
 					sql = "update time_table set monday = ? where start_time = '11:00'";
 				}
 				if(i == 2)
@@ -66,7 +65,7 @@ public class TimeTableDAO
 				if(i == 1)
 				{
 					//update 11시 화요일
-					System.out.println("ffffffffffffff");
+					
 					sql = "update time_table set tuesday = ? where start_time = '11:00'";
 				}
 				if(i == 2)

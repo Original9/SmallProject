@@ -15,8 +15,13 @@ public class Ob_subject
 	public SimpleStringProperty subject_y_s = new SimpleStringProperty();
 	public SimpleStringProperty class_point = new SimpleStringProperty();
 	public SimpleStringProperty grade = new SimpleStringProperty();
+	public SimpleStringProperty subject_day =new SimpleStringProperty();
+	
 	public SimpleStringProperty getSuject_code() {
 		return suject_code;
+	}
+	public SimpleStringProperty getSubject_day() {
+		return subject_day;
 	}
 	public SimpleStringProperty getSubject_name() {
 		return subject_name;

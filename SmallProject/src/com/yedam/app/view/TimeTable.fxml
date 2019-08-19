@@ -34,19 +34,19 @@
          </font>
       </Label>
       <TextField fx:id="txStd_info" blendMode="GREEN" editable="false" layoutX="96.0" layoutY="16.0" prefHeight="22.0" prefWidth="661.0" />
-      <TableView fx:id="tableView1" layoutX="14.0" layoutY="269.0" onMouseClicked="#getInformation1" prefHeight="195.0" prefWidth="776.0">
+      <TableView fx:id="tableView1_tt" layoutX="14.0" layoutY="269.0" prefHeight="195.0" prefWidth="776.0">
          <columns>
-            <TableColumn fx:id="colSubject_code1" prefWidth="53.0" text="과목코드" />
-            <TableColumn fx:id="colSubject_name1" prefWidth="45.0" text="과목" />
-            <TableColumn fx:id="colSubject_explain1" prefWidth="33.0" text="설명" />
-            <TableColumn fx:id="colSubject_group_code1" prefWidth="88.0" text="그룹코드" />
-            <TableColumn fx:id="colSubject_start_day1" prefWidth="75.0" text="시작날짜" />
-            <TableColumn fx:id="colSubject_end_day1" prefWidth="76.0" text="종료날짜" />
-            <TableColumn fx:id="colSubject_start_time1" maxWidth="100.0" prefWidth="237.0" text="시작시간" />
-            <TableColumn fx:id="colSubject_end_time1" minWidth="0.0" prefWidth="66.0" text="종료시간" />
-            <TableColumn fx:id="colClass_point1" minWidth="4.0" prefWidth="64.0" text="학점" />
-            <TableColumn fx:id="colSubject_day1" minWidth="4.0" prefWidth="74.0" text="요일" />
-            <TableColumn fx:id="colSubject_y_s1" minWidth="4.0" prefWidth="101.0" text="y_s" />
+            <TableColumn fx:id="colSubject_code_tt" prefWidth="53.0" text="과목코드" />
+            <TableColumn fx:id="colSubject_name_tt" prefWidth="45.0" text="과목" />
+            <TableColumn fx:id="colSubject_explain_tt" prefWidth="33.0" text="설명" />
+            <TableColumn fx:id="colSubject_group_code_tt" prefWidth="88.0" text="그룹코드" />
+            <TableColumn fx:id="colSubject_start_day_tt" prefWidth="75.0" text="시작날짜" />
+            <TableColumn fx:id="colSubject_end_day_tt" prefWidth="76.0" text="종료날짜" />
+            <TableColumn fx:id="colSubject_start_time_tt" maxWidth="100.0" prefWidth="237.0" text="시작시간" />
+            <TableColumn fx:id="colSubject_end_time_tt" minWidth="0.0" prefWidth="66.0" text="종료시간" />
+            <TableColumn fx:id="colClass_point_tt" minWidth="4.0" prefWidth="64.0" text="학점" />
+            <TableColumn fx:id="colSubject_day_tt" minWidth="4.0" prefWidth="74.0" text="요일" />
+            <TableColumn fx:id="colSubject_y_s_tt" minWidth="4.0" prefWidth="101.0" text="y_s" />
          </columns>
       </TableView>
    </children>
