@@ -230,8 +230,7 @@ public class TimeTableController implements Initializable
 			
 			for(TimeTable tb : list) // timetable list에 있는 값을 데이터베이스로 업데이트 하자 이거 업데이트하고 비어있는 시간에 들을수 있는 과목을 subject테이블과 조인해서 밑에 view창에 띄우면 끝 
 			{
-				System.out.println(tb);
-				System.out.println("dddddddd11111111111111");
+				System.out.println(tb);				
 			}
 			// 이걸 TimeTable에 업데이트해서 빈 시간에 어떤 시간표를 넣을수 있을지 확인하자.
 					
@@ -245,100 +244,69 @@ public class TimeTableController implements Initializable
 	}
 	
 	
-//	ArrayList<Subject> applicableList = new ArrayList<>(); // 하나하나 null인값 조회해서 리스트에 넣고 마지막에 viwe에 뿌려준다.
-//	public void Applicable_subjects()
-//	{
-//		Connection conn = DAO.getConnect();		
-//		Subject temp_subject = null;
-//		// list에 값이 다 들어가 이있다. 
-//		for(int i = 0 ; i < list.size() ; i++)// 9 시 부터 시작하는 과목중에 월요일을 가르치고 있다. 
-//		{			
-//			if (list.get(i).getMonday() == null) {
-//				String sql = null;
-//				if (i == 0) {
-//					// update 9시 월요일
-//					sql = "select * from subject where subject_start_time = '9:00' and subject_day = '월'";
-//				}
-//				if (i == 1) {
-//					// update 11시 월요일
-//					sql = "select * from subject where subject_start_time = '11:00' and subject_day = '월'";
-//				}
-//				if (i == 2) {
-//					// update 13시 월요일
-//					sql = "select * from subject where subject_start_time = '13:00' and subject_day = '월'";
-//				}
-//				if (i == 3) {
-//					// update 15시 월요일
-//					sql = "select * from subject where subject_start_time = '15:00' and subject_day = '월'";
-//				}
-//				PreparedStatement pstmt;
-//				try {
-//					pstmt = conn.prepareStatement(sql);
-//					ResultSet rs = pstmt.executeQuery();
-//					while (rs.next()) {
-//						temp_subject = new Subject();
-//						temp_subject.setSubject_code(rs.getString("subject_code"));
-//						temp_subject.setSubject_name(rs.getString("subject_name"));
-//						temp_subject.setSubject_explain(rs.getString("subject_explain"));
-//						temp_subject.setSubject_group_code(rs.getString("subject_group_code"));
-//						temp_subject.setSubject_start_day(rs.getString("subject_start_day"));
-//						temp_subject.setSubject_end_day(rs.getString("subject_end_day"));
-//						temp_subject.setSubject_start_time(rs.getString("subject_start_time"));
-//						temp_subject.setSubject_end_time(rs.getString("subject_end_time"));
-//						temp_subject.setSubject_y_s(rs.getString("subject_y_s"));
-//						temp_subject.setClass_point(rs.getString("class_point"));
-//						temp_subject.setGrade(rs.getString("grade"));
-//						temp_subject.setSubject_day(rs.getString("subject_day"));
-//						applicableList.add(temp_subject);
-//					}
-//					rs.close();
-//
-//				} catch (SQLException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//
-//			}
-//			
-//		}
-//		
-//		
-//		
-//	    String sql = "select * from subject where subject_start_time = '9:00' and subject_day = '화' ";
-//	    PreparedStatement pstmt;
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1,LoginController.getConn_info());
-//			ResultSet rs = pstmt.executeQuery();
-//			while(rs.next())
-//			{
-//				temp_subject = new Subject();				
-//				temp_subject.setSubject_code(rs.getString("subject_code"));
-//				temp_subject.setSubject_name(rs.getString("subject_name"));
-//				temp_subject.setSubject_explain(rs.getString("subject_explain"));
-//				temp_subject.setSubject_group_code(rs.getString("subject_group_code"));
-//				temp_subject.setSubject_start_day(rs.getString("subject_start_day"));
-//				temp_subject.setSubject_end_day(rs.getString("subject_end_day"));
-//				temp_subject.setSubject_start_time(rs.getString("subject_start_time"));
-//				temp_subject.setSubject_end_time(rs.getString("subject_end_time"));
-//				temp_subject.setSubject_y_s(rs.getString("subject_y_s"));
-//				temp_subject.setClass_point(rs.getString("class_point"));
-//				temp_subject.setGrade(rs.getString("grade"));
-//				temp_subject.setSubject_day(rs.getString("subject_day"));
-//				
-//				System.out.println(temp_subject);// 불러오는거 확인 인제 뿌려주기만하면덴다.
-//				applicableList.add(temp_subject);
-//								
-//			}			
-//			rs.close();
-//			tableView1.setItems(FXCollections.observableArrayList(applicableList));
-//			
-//			
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}		
-//	}
+	ArrayList<Subject> applicableList = new ArrayList<>(); // 하나하나 null인값 조회해서 리스트에 넣고 마지막에 viwe에 뿌려준다.
+	public void Applicable_subjects()
+	{
+		Connection conn = DAO.getConnect();		
+		Subject temp_subject = null;
+		// list에 값이 다 들어가 이있다. 
+		for(int i = 0 ; i < list.size() ; i++)// 9 시 부터 시작하는 과목중에 월요일을 가르키고 있다. 
+		{			
+			if (list.get(i).getMonday() == null) {
+				String sql = null;
+				if (i == 0) {
+					// update 9시 월요일
+					sql = "select * from subject where subject_start_time = '9:00' and subject_day = '월'";
+				}
+				if (i == 1) {
+					// update 11시 월요일
+					sql = "select * from subject where subject_start_time = '11:00' and subject_day = '월'";
+				}
+				if (i == 2) {
+					// update 13시 월요일
+					sql = "select * from subject where subject_start_time = '13:00' and subject_day = '월'";
+				}
+				if (i == 3) {
+					// update 15시 월요일
+					sql = "select * from subject where subject_start_time = '15:00' and subject_day = '월'";
+				}
+				PreparedStatement pstmt;
+				try {
+					pstmt = conn.prepareStatement(sql);
+					ResultSet rs = pstmt.executeQuery();
+					while (rs.next())
+					{
+						temp_subject = new Subject();
+						temp_subject.setSubject_code(rs.getString("subject_code"));
+						temp_subject.setSubject_name(rs.getString("subject_name"));
+						temp_subject.setSubject_explain(rs.getString("subject_explain"));
+						temp_subject.setSubject_group_code(rs.getString("subject_group_code"));
+						temp_subject.setSubject_start_day(rs.getString("subject_start_day"));
+						temp_subject.setSubject_end_day(rs.getString("subject_end_day"));
+						temp_subject.setSubject_start_time(rs.getString("subject_start_time"));
+						temp_subject.setSubject_end_time(rs.getString("subject_end_time"));
+						temp_subject.setSubject_y_s(rs.getString("subject_y_s"));
+						temp_subject.setClass_point(rs.getString("class_point"));
+						temp_subject.setGrade(rs.getString("grade"));
+						temp_subject.setSubject_day(rs.getString("subject_day"));
+						applicableList.add(temp_subject);
+					}
+					tableView1_tt.setItems(FXCollections.observableArrayList(applicableList));
+					rs.close();
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+			
+		}
+		
+		
+		
+	    
+	}
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) 
@@ -365,7 +333,6 @@ public class TimeTableController implements Initializable
 		colSubject_end_time_tt.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_end_time"));
 		colSubject_y_s_tt.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_y_s"));
 		colClass_point_tt.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("class_point"));
-	//	colGrade.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("grade"));
 		colSubject_day_tt.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_day"));
 		
 		

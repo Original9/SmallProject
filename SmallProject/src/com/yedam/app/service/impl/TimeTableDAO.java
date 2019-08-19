@@ -177,7 +177,7 @@ public class TimeTableDAO
 				if(i == 3)
 				{
 					//update 15시 화요일
-					sql = "update time_table set frisday = ? where start_time = '15:00'";
+					sql = "update time_table set friday = ? where start_time = '15:00'";
 				}
 				PreparedStatement pstmt;
 				try {
