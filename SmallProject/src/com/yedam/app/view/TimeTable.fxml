@@ -9,17 +9,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="850.0" styleClass="root" stylesheets="@timetableBackground.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yedam.app.view.TimeTableController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="850.0" styleClass="root" stylesheets="@timetableBackground.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yedam.app.view.TimeTableController">
    <children>
-      <TableView fx:id="tableView" fixedCellSize="-20.0" layoutX="24.0" layoutY="69.0" prefHeight="133.0" prefWidth="811.0">
+      <TableView fx:id="tableView" fixedCellSize="-20.0" layoutX="20.0" layoutY="93.0" prefHeight="133.0" prefWidth="811.0">
         <columns>
-          <TableColumn fx:id="colstart_time" minWidth="80.0" text="Start_time" />
-            <TableColumn fx:id="colend_time" minWidth="80.0" text="End_time" />
-            <TableColumn fx:id="colMonday" minWidth="1.0" text="월요일" />
-            <TableColumn fx:id="colTuesday" minWidth="120.0" text="화요일" />
-            <TableColumn fx:id="colWednesday" minWidth="120.0" text="수요일" />
-            <TableColumn fx:id="colThursday" minWidth="120.0" text="목요일" />
-            <TableColumn fx:id="colFriday" maxWidth="123.0" minWidth="120.0" text="금요일" />
+          <TableColumn fx:id="colstart_time" minWidth="59.0" prefWidth="75.0" text="Start_time" />
+            <TableColumn fx:id="colend_time" minWidth="73.0" prefWidth="73.0" text="End_time" />
+            <TableColumn fx:id="colMonday" minWidth="1.0" prefWidth="126.0" text="월요일" />
+            <TableColumn fx:id="colTuesday" minWidth="120.0" prefWidth="130.0" text="화요일" />
+            <TableColumn fx:id="colWednesday" minWidth="117.0" prefWidth="134.0" text="수요일" />
+            <TableColumn fx:id="colThursday" minWidth="95.0" prefWidth="132.0" text="목요일" />
+            <TableColumn fx:id="colFriday" maxWidth="210.0" minWidth="109.0" prefWidth="136.0" text="금요일" />
         </columns>
          <effect>
             <InnerShadow color="#ff9999" />
@@ -28,28 +28,28 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </opaqueInsets>
       </TableView>
-      <Label layoutX="24.0" layoutY="14.0" prefHeight="25.0" prefWidth="72.0" text="시간표" textAlignment="CENTER">
+      <Label layoutX="14.0" layoutY="27.0" prefHeight="25.0" prefWidth="72.0" text="시간표" textAlignment="CENTER">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="txStd_info" blendMode="GREEN" editable="false" layoutX="96.0" layoutY="16.0" prefHeight="23.0" prefWidth="719.0" />
-      <TableView fx:id="tableView1_tt" layoutX="25.0" layoutY="408.0" prefHeight="439.0" prefWidth="811.0">
+      <TextField fx:id="txStd_info" blendMode="GREEN" editable="false" layoutX="95.0" layoutY="28.0" prefHeight="23.0" prefWidth="719.0" />
+      <TableView fx:id="tableView1_tt" layoutX="20.0" layoutY="344.0" prefHeight="468.0" prefWidth="811.0">
          <columns>
-            <TableColumn fx:id="colSubject_code_tt" prefWidth="53.0" text="과목코드" />
-            <TableColumn fx:id="colSubject_name_tt" prefWidth="45.0" text="과목" />
-            <TableColumn fx:id="colSubject_explain_tt" prefWidth="33.0" text="설명" />
-            <TableColumn fx:id="colSubject_group_code_tt" prefWidth="88.0" text="그룹코드" />
-            <TableColumn fx:id="colSubject_start_day_tt" prefWidth="75.0" text="시작날짜" />
-            <TableColumn fx:id="colSubject_end_day_tt" prefWidth="76.0" text="종료날짜" />
-            <TableColumn fx:id="colSubject_start_time_tt" maxWidth="100.0" prefWidth="237.0" text="시작시간" />
-            <TableColumn fx:id="colSubject_end_time_tt" minWidth="0.0" prefWidth="66.0" text="종료시간" />
-            <TableColumn fx:id="colClass_point_tt" minWidth="4.0" prefWidth="64.0" text="학점" />
-            <TableColumn fx:id="colSubject_day_tt" minWidth="4.0" prefWidth="74.0" text="요일" />
-            <TableColumn fx:id="colSubject_y_s_tt" minWidth="4.0" prefWidth="101.0" text="y_s" />
+            <TableColumn fx:id="colSubject_code_tt" prefWidth="54.0" text="과목코드" />
+            <TableColumn fx:id="colSubject_name_tt" minWidth="7.0" prefWidth="141.0" text="과목" />
+            <TableColumn fx:id="colSubject_explain_tt" minWidth="0.0" prefWidth="180.0" text="설명" />
+            <TableColumn fx:id="colSubject_group_code_tt" prefWidth="53.0" text="그룹코드" />
+            <TableColumn fx:id="colSubject_start_day_tt" prefWidth="65.0" text="시작날짜" />
+            <TableColumn fx:id="colSubject_end_day_tt" prefWidth="66.0" text="종료날짜" />
+            <TableColumn fx:id="colSubject_start_time_tt" maxWidth="248.0" prefWidth="64.0" text="시작시간" />
+            <TableColumn fx:id="colSubject_end_time_tt" minWidth="0.0" prefWidth="56.0" text="종료시간" />
+            <TableColumn fx:id="colClass_point_tt" minWidth="4.0" prefWidth="36.0" text="학점" />
+            <TableColumn fx:id="colSubject_day_tt" minWidth="4.0" prefWidth="29.0" text="요일" />
+            <TableColumn fx:id="colSubject_y_s_tt" minWidth="4.0" prefWidth="66.0" text="y_s" />
          </columns>
       </TableView>
-      <Label layoutX="24.0" layoutY="355.0" prefHeight="42.0" prefWidth="384.0" text="수강신청가능한 목록" textFill="#7a2ce1">
+      <Label layoutX="20.0" layoutY="275.0" prefHeight="42.0" prefWidth="384.0" text="수강신청가능한 목록" textFill="#e488b8">
          <font>
             <Font size="36.0" />
          </font>
