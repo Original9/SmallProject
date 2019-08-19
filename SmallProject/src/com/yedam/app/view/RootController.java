@@ -7,14 +7,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 public class RootController implements Initializable {
-
+	private AnchorPane rootLayout;
+	private Stage primaryStage;
+	
 	@FXML
 	MenuBar menuBar;
 	@FXML
@@ -41,8 +45,15 @@ public class RootController implements Initializable {
 	@FXML
 	public void handlelogout(ActionEvent actionEvent) {
 		try {
-			AnchorPane loginview = FXMLLoader.load(getClass().getResource("Login.fxml"));
-			borderPane.setCenter(loginview);
+//			AnchorPane loginview = FXMLLoader.load(getClass().getResource("Login.fxml"));
+//			borderPane.setCenter(loginview);
+			rootLayout = FXMLLoader.load(getClass().getResource("Login.fxml"));
+			Scene scene = new Scene(rootLayout);
+			primaryStage = (Stage) menuBar.getScene().getWindow();
+			primaryStage.setTitle("Login");
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
