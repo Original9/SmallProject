@@ -12,7 +12,7 @@
           <Menu mnemonicParsing="false" text="Menu">
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#handlePageSubject" text="SubjectApply" />
-                  <MenuItem mnemonicParsing="false" onAction="#handlePageTime" text="TimeTable" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleDialog" text="TimeTable" />
                   <MenuItem mnemonicParsing="false" onAction="#handlePageAdministrator" text="Administrator" />
             </items>
           </Menu>

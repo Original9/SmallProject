@@ -10,10 +10,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class RootController implements Initializable {
 	private AnchorPane rootLayout;
@@ -81,6 +85,41 @@ public class RootController implements Initializable {
 		try {
 			AnchorPane timeview = FXMLLoader.load(getClass().getResource("TimeTable.fxml"));
 			borderPane.setCenter(timeview);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	public void handlePopup(ActionEvent actionEvent) {
+		try {
+			Popup popup = new Popup();
+			popup.setAutoHide(true);
+			AnchorPane timeview = FXMLLoader.load(getClass().getResource("TimeTable.fxml"));
+			popup.getContent().add(timeview);
+		//	ImageView img = (ImageView) loginview.lookup("#img");
+		//	img.setOnMouseClicked(event -> popup.hide());
+			Stage primaryStage = (Stage) menuBar.getScene().getWindow();
+			// Stage primaryStage = (Stage) menuBar.getScene().getWindow();
+			popup.show(primaryStage, 850, 900);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	public void handleDialog(ActionEvent actionEvent) {
+		try {
+			AnchorPane TimeView = FXMLLoader.load(getClass().getResource("TimeTable.fxml"));
+			Stage primStage = (Stage) menuBar.getScene().getWindow();
+			Stage dialog = new Stage(StageStyle.UTILITY);
+			//dialog.initModality(Modality.WINDOW_MODAL); // 마우스 커서 제한거는 옵션
+			dialog.initOwner(primStage);
+			dialog.setTitle("TimeTable"); // 상단 제목
+			Scene scene = new Scene(TimeView);
+			dialog.setScene(scene);
+			dialog.setResizable(false);
+			dialog.show();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 	private Stage primaryStage;
-	private BorderPane rootLayout;
+	private BorderPane rootLayout;  
 	private AnchorPane loginlayout;
 
 	public BorderPane getRootLayout() {
@@ -45,31 +45,6 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-
-	
-	
-//	public void initRootLayout() {
-//		try {
-//			rootLayout = FXMLLoader.load(getClass().getResource("root.fxml"));
-//			Scene scene = new Scene(rootLayout);
-//			primaryStage.setTitle("Root");
-//			primaryStage.setScene(scene);
-//			primaryStage.show();
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//
-//	}
-
-//	public void showLogin() {
-//		try {
-//			AnchorPane loginview = FXMLLoader.load(getClass().getResource("Login.fxml"));
-//			rootLayout.setCenter(loginview);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
 
 	public static void main(String[] args) {
 		launch(args);
