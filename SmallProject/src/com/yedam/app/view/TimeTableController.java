@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import com.sun.javafx.scene.EnteredExitedHandler;
 import com.yedam.app.Observable.Ob_subject;
 import com.yedam.app.Observable.Ob_time_table;
 import com.yedam.app.common.DAO;
@@ -21,11 +22,16 @@ import com.yedam.app.service.impl.TimeTableDAO;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class TimeTableController implements Initializable 
 {
@@ -536,7 +542,23 @@ public class TimeTableController implements Initializable
 			Applicable_subjects();			
 		}
 		
+		//thread.start();
+		
+		
 	}
+	
+	
+		Thread thread = new Thread(new Runnable() {
+
+			@Override
+			public void run() {	
+				txStd_info.getScene().getWindow().getOnCloseRequest();
+				
+				
+				
+			}
+		});
+		
 	
 	public void showEnable_point()
 	{

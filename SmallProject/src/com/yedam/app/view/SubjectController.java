@@ -38,6 +38,10 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class SubjectController implements Initializable {
+	
+	static Stage dialog = new Stage(StageStyle.UTILITY);
+	
+	
 	@FXML
 	private TableView<Subject> tableView;
 	@FXML
@@ -302,22 +306,30 @@ public class SubjectController implements Initializable {
 		alert.setHeaderText("Complete");
 		alert.setContentText("수강신청 목록에 등록되었습니다.");
 		alert.show();
-		try {
-			AnchorPane TimeView = FXMLLoader.load(getClass().getResource("TimeTable.fxml"));
-			// Stage primStage = (Stage) txStd_info.getScene().getWindow();
-			Stage dialog = new Stage(StageStyle.UTILITY);
-			// dialog = (Stage) txStd_info.getScene().getWindow();
-			// dialog.initModality(Modality.WINDOW_MODAL); // 마우스 커서 제한거는 옵션
-			// dialog.initOwner(primStage);
-			dialog.setTitle("timeTable"); // 상단 제목
-			Scene scene = new Scene(TimeView);
-			dialog.setScene(scene);
-			dialog.setResizable(false);
-			dialog.show();
+		
+		
+			try {
+				dialog.close();
+				AnchorPane TimeView = FXMLLoader.load(getClass().getResource("TimeTable.fxml"));
+				// Stage primStage = (Stage) txStd_info.getScene().getWindow();
+				dialog = new Stage(StageStyle.UTILITY);
+				// dialog = (Stage) txStd_info.getScene().getWindow();
+				// dialog.initModality(Modality.WINDOW_MODAL); // 마우스 커서 제한거는 옵션
+				// dialog.initOwner(primStage);
+				dialog.setTitle("timeTable"); // 상단 제목
+				Scene scene = new Scene(TimeView);
+				dialog.setScene(scene);
+				dialog.setResizable(false);
+				dialog.show();	
+				
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		
+		
+		
 	}
 
 	@FXML
@@ -411,6 +423,8 @@ public class SubjectController implements Initializable {
 
 		// 수강가능한 학점 조회해서 띄우기
 		showEnable_point();
+		
+		
 
 	}
 
