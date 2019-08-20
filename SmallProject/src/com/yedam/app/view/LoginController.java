@@ -117,7 +117,7 @@ public class LoginController implements Initializable {
 					try {
 						rootLayout = FXMLLoader.load(getClass().getResource("root.fxml"));
 						Scene scene = new Scene(rootLayout, 850, 900);
-						primaryStage = (Stage) txtUserName.getScene().getWindow();
+						primaryStage = (Stage) txtUserName.getScene().getWindow(); // statge 
 						primaryStage.setTitle("SubjectApply");
 						AnchorPane subjectview = FXMLLoader.load(getClass().getResource("SubjectApply.fxml"));
 						rootLayout.setCenter(subjectview);

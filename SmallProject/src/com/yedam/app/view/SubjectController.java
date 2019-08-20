@@ -175,8 +175,20 @@ public class SubjectController implements Initializable
  
 	@FXML 
 	protected void init_register_list(ActionEvent event)
-	{		
-		for(int i = 0 ; i < register_list.size() ; )
+	{
+		Connection conn = DAO.getConnect();
+		String sql = "truncate table register_subject_class ";
+		try {			
+				PreparedStatement psmt = conn.prepareStatement(sql);
+				psmt.executeUpdate();				
+					
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		for(int i = 0 ; i < register_list.size() ; )// 하나씩 지워지고 정렬되기 때문에 i++해줄필요 없다. 
 		{
 			register_list.remove(i);
 		}
@@ -354,7 +366,7 @@ public class SubjectController implements Initializable
 		
 		ShowStudentInfo();
 		
-		colSubject_code.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_code"));
+		colSubject_code.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_code")); // 형변환 된듯
 		colSubject_name.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_name"));		
 		colSubject_explain.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_explain"));
 		colSubject_group_code.setCellValueFactory(new PropertyValueFactory<Ob_subject, String>("subject_group_code"));		
